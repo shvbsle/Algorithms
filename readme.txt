@@ -11,3 +11,7 @@ Every code must have the name of the problem and the code extension.
 ---------------------------------------------------------------------------
 
 Instruction for Github repository upload:
+git init .
+git add .
+git commit -m "comment"
+git -u push origin master
