@@ -43,3 +43,25 @@ table. Coz all keys of the map are initialized to 0. Hence, if a fucntions retur
 
 ============================================================================
 
+Ouuu... While doing merge sort I found a lot of usefull things
+
+vectors; merging vectors in c ++
+
+assume you have 
+std::vector<int> AB, A = {1,2,3,4},B = {5,6,7,8};
+
+then do:
+
+AB.reserve(A.size()+B.size());
+AB.insert(AB.end(), A.begin().A.end());
+AB.insert(AB.end(), B.begin(), B.end());
+
+this will give us AB = {1,2,3,4,5,6,7,8}
+
+-----
+
+Now, to check if a vector is empty: vector.empty() (boolean value return)
+
+to erase an element (or range of elements) in the vector: vector.erase(vector.begin() + index, (optional) vector.begin()+end)
+
+=============================================================================	
