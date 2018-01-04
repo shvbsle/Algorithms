@@ -10,8 +10,20 @@ All the codes that I will write must start with a commented problem statement.
 Every code must have the name of the problem and the code extension.
 ---------------------------------------------------------------------------
 
-Instruction for Github repository upload:
-git init .
+Instruction for Github repository upload and commits:
 git add .
 git commit -m "comment"
-git -u push origin master
+git push -u origin master
+--------------------------------------------------------------------------
+
+Remeber to make flashcards after you have made written any code!
+--------------------------------------------------------------------------
+
+Types of Algorithm problems that I have explored:
+- Greedy
+- Dynamic
+- Divide and Conquer
+- Backtracking
+- Branch and bound
+
+----------------------------------------------------------------------------

@@ -27,3 +27,19 @@ classname obj(parameters);
 Disjoint Set Note!:
 
 Once you find parents make sure to union the sets. I.e. rreset their parents!
+
+============================================================================
+
+in c++ 
+bits/stdc++.h has strings in it.
+
+string.length() : length of the string
+string.at(index) : char at an index
+string.substr(start, end) : gets substring between start and end index
+
+About maps:
+maps initialize all values to 0. This is quite frustrating in dynamic programming when generating the 
+table. Coz all keys of the map are initialized to 0. Hence, if a fucntions return 0 as a value the function still things that the value isn't computed and hence can cause an infinite loop. instead initialize actual 0 values to -1. Then the next best thign you can do is, use "return (table[val] == -1?0:table[val]) "
+
+============================================================================
+
