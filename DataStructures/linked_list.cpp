@@ -1,4 +1,4 @@
-/*
+	/*
 This code has all my linked list generation concepts
 */
 #include <iostream>
