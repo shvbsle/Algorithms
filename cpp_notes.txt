@@ -64,4 +64,15 @@ Now, to check if a vector is empty: vector.empty() (boolean value return)
 
 to erase an element (or range of elements) in the vector: vector.erase(vector.begin() + index, (optional) vector.begin()+end)
 
-=============================================================================	
+=============================================================================
+
+passing arrays and initilazing values in array:
+
+pass 2d array just by name. 
+declare function as:type func(type array_name[][size]);
+
+initialize memory:
+memset(arrayname, value_to_be_initialized, sizeof(arrayname[0][0]...[0])*dim1*dim2*...dimr);
+^ initializes a n dimentional array by value_to_be_initialized
+
+============================================================================

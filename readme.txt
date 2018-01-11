@@ -27,3 +27,6 @@ Types of Algorithm problems that I have explored:
 - Branch and bound
 
 ----------------------------------------------------------------------------
+
+the folder named DataStructures contains all the C++ implementations of basic data structures.
+Look out for important notes and flashcard points in that folder

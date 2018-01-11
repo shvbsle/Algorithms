@@ -1,0 +1,9 @@
+Okay here are my notes on the data structures that I have implemented in C++ and some
+extra details and ideas that I got along with it!
+------------------------------------------------------------------------------------
+
+Do not use bits/stdc++.h as during the time of coding test, these librarires might not be
+available
+------------------------------------------------------------------------------------
+
+Wow! I wrote a brilliant code for linked list. Vey clean. Amazing

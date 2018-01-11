@@ -12,6 +12,8 @@ Don't try for 8,8.. will take too long.
 ---------------------------------------
 
 What the fuck!  C++ is so muc more faster than Python for this task
+
+This solution stops as soon as it finds a working solution. This can be considered as branch & bound as well
 */
 #include <bits/stdc++.h>
 int size_x = 5, size_y = 5;

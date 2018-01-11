@@ -9,6 +9,9 @@ Starting is always 0,0
 
 Don't try for 8,8.. will take too long. 
 Make sure, that you pass copies to the recursive function. Python is weird this way
+
+
+This solution stops as soon as it finds a working solution. This can be considered as branch & bound as well
 '''
 
 # size the board
