@@ -17,3 +17,68 @@ Shiv! If you wanna get somewhere, then you have to implement all those data stru
 that you think won't matter. Be hyper good  at what you do. Please!
 -----------------------------------------------------------------------------------
 
+Tree traversals:
+preorder: Par(P)Left(L)Right(R)
+inorder: LPR
+post: LRP
+
+non recursive algo blueprint for traversals:
+Preorder:
+===================================
+initialize a stack S
+while(root!=NULL){
+	visit root; // here
+	pust root to stack;
+	root = root->left;
+}
+
+while(!stack.empty()){
+	root = stack.pop;
+	root = root->right;
+	while(root!=NULL){
+		visit(root); //here!
+		push root to stack
+		root = root->left;
+
+	}
+}
+
+==================================
+
+In order:
+=================================
+while(root!=NULL){
+	push root to stack;
+	root = root->left;
+}
+
+while(!stack.empty()){
+	root = stack.pop;
+	visit(root) //// Put visit here!
+	root = root->right;
+	while(root!=NULL){
+	push root to stack;
+	root = root->left;
+	}
+}
+================================
+
+post order:
+===============================
+while(root!=NULL){
+	push root to stack;
+	root = root->left;
+}
+
+while(!stack.empty()){
+	root = stack.pop;
+	
+	root = root->right;
+	while(root!=NULL){
+	push root to stack;
+	root = root->left;
+	}
+	visit(root) //// Put visit here!
+}
+================================
+

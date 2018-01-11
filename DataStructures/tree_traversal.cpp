@@ -77,9 +77,10 @@ void recur_postorder(node *root){
 void pre_order(node *root){
 	// not sue if this will work
 	std::vector<node *> stack;
+	// node *temp = NULL;
 	// Initial push of nodes onto the stack
 	while(root != NULL){
-		std::cout << root->data;
+		std::cout << root->data; //pre order
 		stack.push_back(root);
 		root = root->left;
 	}
@@ -89,14 +90,17 @@ void pre_order(node *root){
 	// Once the stack is ready, we are ready to traverse in order
 	while(!stack.empty()){
 		root = stack.back();
+		// std::cout << root->data; // in-order
 		stack.pop_back();
 		root = root->right;
 		// std::cout << root->data;
 		while(root != NULL){
-			std::cout << root->data;
+			std::cout << root->data; // pre-order
 			stack.push_back(root);
+			// temp = root;
 			root = root->left;
 		}
+		// std::cout << temp->data;
 	}
 }
 
