@@ -9,3 +9,11 @@ available
 Wow! I wrote a brilliant code for linked list. Vey clean. Amazing
 ------------------------------------------------------------------------------------
 
+In a doubly linked list, swap the prev and the next pointers and set the head to the last 
+element and you are done!
+-----------------------------------------------------------------------------------
+
+Shiv! If you wanna get somewhere, then you have to implement all those data structures 
+that you think won't matter. Be hyper good  at what you do. Please!
+-----------------------------------------------------------------------------------
+
