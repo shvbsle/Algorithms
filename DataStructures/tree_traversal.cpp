@@ -104,6 +104,37 @@ void pre_order(node *root){
 	}
 }
 
+// non recursive post order traversal
+void post_order(node *root){
+	std::vector<std::pair<node *, int>> stack; //this staack now also contains the flag
+
+	while(root != NULL){
+		stack.push_back(std::make_pair(root, 0));
+		root = root->left;
+	}
+
+	while(!stack.empty()){
+		std::pair<node *, int> R;
+		R = stack.back();
+		root = R.first;
+		int flag = R.second;
+		stack.pop_back();
+		if(flag == 0){
+			stack.push_back(std::make_pair(root, 1));
+			root = root->right;
+			while(root!=NULL){
+				stack.push_back(std::make_pair(root, 0));
+				root = root->left;
+			}
+		}
+		else{
+			// root = stack.back()->first;
+			std::cout << root->data;
+		}
+
+	}
+}
+
 int main(){
 	char to_push[9]= {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'};
 	node *root = NULL;
@@ -120,5 +151,9 @@ int main(){
 
 	std::cout << "\n\nnon-recursice method for preorder: ";
 	pre_order(root);
+
+	// This one is a little bitmore tricky
+	std::cout << "\n\nnon-recursive post order traversal: ";
+	post_order(root);
 	return 0;
 }
