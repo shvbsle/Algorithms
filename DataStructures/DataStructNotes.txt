@@ -63,22 +63,27 @@ while(!stack.empty()){
 }
 ================================
 
-post order:
-===============================
-while(root!=NULL){
-	push root to stack;
-	root = root->left;
+------------------------------------------------------
+recursive tree creation idea/hack
+
+the thing is, instead of taking the data from the user and then building the tree,
+build a tree and ask user to fill data into it.
+
+node *build(int value){
+	if (value != -1){
+		node *N = (node*)malloc(sizeof(node));
+		node->data = value;
+		node->left = create(input());
+		node->right = create(input());
+		return node;
+	}
+	else{
+	return NULL;
+	}
 }
 
-while(!stack.empty()){
-	root = stack.pop;
-	
-	root = root->right;
-	while(root!=NULL){
-	push root to stack;
-	root = root->left;
-	}
-	visit(root) //// Put visit here!
-}
-================================
+Short and elegant
+
+-------------------------------------------------------
+
 
