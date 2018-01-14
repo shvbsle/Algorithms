@@ -1,0 +1,3 @@
+Okay this is where I will write my OOP notes...
+This folder will contain some examples in both Python and CPP
+---------------------------------------------

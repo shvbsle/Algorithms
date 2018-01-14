@@ -30,3 +30,7 @@ Types of Algorithm problems that I have explored:
 
 the folder named DataStructures contains all the C++ implementations of basic data structures.
 Look out for important notes and flashcard points in that folder
+
+---------------------------------------------------------------------------
+
+The folder OOP contains some important OOP programming concepts that I have practiced
