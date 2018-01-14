@@ -1,3 +1,99 @@
 Okay this is where I will write my OOP notes...
-This folder will contain some examples in both Python and CPP
+This folder will contain some examples in both Python and CPP but most will be in Python only
 ---------------------------------------------
+
+constructor in python:
+
+def __init__(self):
+	print("default constructor called")
+
+---------------------------------------------
+
+Important terms before we start. Make flash cards of this!
+
+Class: object prototype or blueprint
+
+Class Variable: Variable shared by all instances of the class. sort of a static variable
+
+Object: an unique instance of datastructure defined by its class
+
+Instance: individual object of a certain class
+
+Instantiate: create an instance of the class
+
+Initialize: set value to the object after instantiation
+
+data member: property of the object
+
+method: a function of an object
+
+inheritance: getting attributes and behaviours from another base class
+
+Function overloading: same fucntion behaves in different ways
+
+Function overriding: derived class function behaves differently thatn base class fuction with the same name
+
+---------------------------------------------
+
+Accessing variables:
+
+say you have  a class:
+class Dog:
+	count = 0
+
+then, doing Dog.count +=1 and self.count +=1 has different results
+
+Dog.count is a static class variable that is common to all objects of the class
+
+self.count is used by a method of the class and will create a new variable and store it as an attribute of the object invoking it instead of the all other objects
+
+hidden variables are declared as 
+__variable_name
+
+and they can be accessed only by the methods and not directly outside the class
+
+----------------------------------------------
+Error handling
+
+else is used when no exceptions in the try part and it executes
+like the "finally part"
+
+try:
+except Exception:
+else:
+
+doesnt matter if exception occurs, finally will be executed
+
+try:
+except:
+finally:
+
+finally can be used instead of else
+
+----------------------------------------------
+
+Python Iterators and generator:
+
+to write an iteraotor, do
+class it:
+	def __init__(self):
+
+	def __iter__(self):
+		return self
+
+	sef __next__(self):
+		return val
+
+i = it()
+now a for loop usually calls the __iter__() method and it return itself
+
+then the for loop calls the__next__() method on the returned object and that how iterators work
+
+A generator IS an interator says yeild instead of return stuff haha
+
+i.e. generators return __iter__ object which can be called using next()
+
+----------------------------------------------------
+
+
+
