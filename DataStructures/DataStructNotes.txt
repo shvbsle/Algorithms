@@ -86,4 +86,26 @@ Short and elegant
 
 -------------------------------------------------------
 
+Advanced Data Structure Notes:
+
+B Trees:
+
+Okay so they are an extension of normal Binary search trees
+They have the following properties:
+- all have a degree (T) which is the number of children it can have
+- root node can have atmost T-1 keys
+- every leaf node will have at most T-1 keys of (T-1)/2 keys at min
+- Each of non-leaf nodes will have T-1 keys in them and will point to T children
+- All leaves appear in the same level
+
+How to insert into it:
+
+This is simple...
+when you get a key, insert it into its proper location if the location is free
+if location not free then remove the (T-1)/2 th element and insert the new item in between
+insert the item into the btree again using the algorithm that you already know
+
+
+
+
 
