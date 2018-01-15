@@ -34,3 +34,8 @@ Look out for important notes and flashcard points in that folder
 ---------------------------------------------------------------------------
 
 The folder OOP contains some important OOP programming concepts that I have practiced
+--------------------------------------------------------------------------
+
+Pending:
+
+Cutting_Rod question in c++
