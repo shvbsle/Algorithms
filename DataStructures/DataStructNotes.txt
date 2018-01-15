@@ -105,6 +105,18 @@ when you get a key, insert it into its proper location if the location is free
 if location not free then remove the (T-1)/2 th element and insert the new item in between
 insert the item into the btree again using the algorithm that you already know
 
+--------------------------------
+
+Heaps (Min and Max heaps)
+
+Insertion in the heap works in a quiet straight forward way
+while inserting make sure that, parent is greater than (for max heap) or less than (min heap)
+the children
+
+to delete a heap element, replace the to delete element with last elelent of the heap and heapify
+
+Insertion is simple... insert at the end and then heapify
+---------------------------------
 
 
 
