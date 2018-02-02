@@ -110,7 +110,3 @@ for i in range(9):
 		to+=1
 		show_board()
 	print(to, ":comp ",tx, ":player")
-
-
-
-
