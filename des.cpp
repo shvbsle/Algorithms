@@ -90,7 +90,7 @@ std::string encrypt(std::string plaintext){
 			temp[i] = '1';
 		}
 	}
-	std::cout << temp << "\n";
+	// std::cout << temp << "\n";
 
 	// S0 value
 	std::string row,col, t1, t2;
@@ -98,7 +98,7 @@ std::string encrypt(std::string plaintext){
 	row.push_back(temp[3]);
 	col.push_back(temp[1]);
 	col.push_back(temp[2]);// = temp[1]+temp[2];
-	std::cout << row << " | " << col << "\n";
+	// std::cout << row << " | " << col << "\n";
 	t1 = s0[bin_vals[row]][bin_vals[col]];
 
 	// S1 value
@@ -115,7 +115,7 @@ std::string encrypt(std::string plaintext){
 	for(int i = 0 ; i < 4; i++){
 		t2[i] = t1.at(p4[i+1]-1);
 	}
-	std::cout << t1;
+	// std::cout << t1;
 
 	//xor with r
 	for(int i =0; i < 4; i++){
@@ -147,7 +147,7 @@ std::string encrypt(std::string plaintext){
 			temp[i] = '1';
 		}
 	}
-	std::cout << temp << "\n";
+	// std::cout << temp << "\n";
 
 	// S0 value
 	row = col = t1 = t2 = "";
@@ -155,7 +155,7 @@ std::string encrypt(std::string plaintext){
 	row.push_back(temp[3]);
 	col.push_back(temp[1]);
 	col.push_back(temp[2]);// = temp[1]+temp[2];
-	std::cout << row << " | " << col << "\n";
+	// std::cout << row << " | " << col << "\n";
 	t1 = s0[bin_vals[row]][bin_vals[col]];
 
 	// S1 value
@@ -189,7 +189,7 @@ std::string encrypt(std::string plaintext){
 	for(int i = 0 ; i < 8; i++){
 		answer[i] = temp2.at(ip_i[i+1]-1);
 	}
-	std::cout << answer;
+	// std::cout << answer;
 
 	return answer;
 }
@@ -221,6 +221,8 @@ int main(){
 	// std::cout << "Enter plaintext (8 bits): ";
 	std::string plaintext = "10111101";
 	std::string cipher = encrypt(plaintext);
+	std::cout << "encrypted text is: " << cipher << "\n";
+	std::cout << "decrypted text is: " << plaintext;
 	// std::cin >> temp;
 	// // create a bitset of plaintext
 	// std::bitset<8> PT(temp);
