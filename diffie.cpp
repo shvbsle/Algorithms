@@ -11,7 +11,7 @@ int ModPow(int x, int y, int p)
 	{
 	if ((y & 1) == 1){
 		res = (res*x) % p;
-		std::cout << res <<" = " <<(res*x) <<  " mod(" << p << ")\n";
+		std::cout << res << " = " <<(res*x) <<  " mod(" << p << ")\n";
 	}
 	y = y>>1;
 	x = (x*x) % p;
