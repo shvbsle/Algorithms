@@ -10,8 +10,8 @@ int ModPow(int x, int y, int p)
 	while (y > 0)
 	{
 	if ((y & 1) == 1){
-	res = (res*x) % p;
-	std::cout << res <<" = " <<(res*x) <<  "%" << p << "\n";
+		res = (res*x) % p;
+		std::cout << res <<" = " <<(res*x) <<  " mod(" << p << ")\n";
 	}
 	y = y>>1;
 	x = (x*x) % p;

@@ -206,24 +206,24 @@ std::string encrypt(std::string plaintext){
 	return answer;
 }
 
-// std::string poly_bound(std::string dividend){
-// 	std::string divisor = "10011", temp = "00000";
-// 	int diff = dividend.length() - divisor.length();
-// 	for(int i = diff; i >= 0; i--){
-// 		temp = "00000";
-// 		std::string r = dividend.substr(0, 5), l = dividend.substr(5, dividend.length());
-// 		for(int j = 0; j < 5; j++){
-// 			if(divisor.at(j) == r.at(j)){
-// 				temp[j] = '0';
-// 			}
-// 			else{
-// 				temp[j] = '1';
-// 			}
-// 		}
-// 		dividend = temp.substr(1,temp.length()) + l;
-// 	}
-// 	return temp.substr(temp.length()-4, temp.length());
-// }
+std::string poly_bound(std::string dividend){
+	std::string divisor = "10011", temp = "00000";
+	int diff = dividend.length() - divisor.length();
+	for(int i = diff; i >= 0; i--){
+		temp = "00000";
+		std::string r = dividend.substr(0, 5), l = dividend.substr(5, dividend.length());
+		for(int j = 0; j < 5; j++){
+			if(divisor.at(j) == r.at(j)){
+				temp[j] = '0';
+			}
+			else{
+				temp[j] = '1';
+			}
+		}
+		dividend = temp.substr(1,temp.length()) + l;
+	}
+	return temp.substr(temp.length()-4, temp.length());
+}
 
 int main(){
 	std::string key_str = "0010010111", plaintext;
