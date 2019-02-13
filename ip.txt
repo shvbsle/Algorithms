@@ -1,3 +1,2 @@
-2
-YX  X  XXY
-XY X XXY
+1
+2 10
