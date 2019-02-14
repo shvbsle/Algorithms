@@ -28,12 +28,12 @@ void arr_trans(std::vector<std::vector<int>> vec, int n, int m){
 		}
 		std::cout << "\n";
     } 
-
 }
 
 int main(){
-	std::vector<std::vector<int> > arr = {{1,2,3,4},{0,2,7,9}, {4,5,1,5}};
-	arr_trans(arr, 2, 3);
+	int n_cols=4, m_rows=1;
+	std::vector<std::vector<int> > arr = {{1,2,3,4}};
+	arr_trans(arr, n_cols, m_rows);
 	return 0;
 }
 
