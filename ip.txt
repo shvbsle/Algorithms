@@ -1,3 +1,7 @@
 2
-(a(b(d()())(e()()))(c()(b(d()())(e()()))))
-(a(b()())(c()()))
+4
+ale apple monkey plea
+abpcplea
+4
+pintu geeksfor geeksgeeks forgeek
+geeksforgeeks
