@@ -1,7 +1,4 @@
-2
-4
-ale apple monkey plea
-abpcplea
-4
-pintu geeksfor geeksgeeks forgeek
-geeksforgeeks
+3
+2 1
+1 1
+10 0
