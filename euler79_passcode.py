@@ -20,8 +20,8 @@ import sys
 # import itertools
 # print(list(itertools.permutations([1,2,3])))
 # unique logins
-# ip = list(set(sys.stdin.read().split('\n')))
-ip = """SMH,TON,RNG,WRO,THG""".split(',')
+ip = list(set(sys.stdin.read().split('\n')))
+# ip = """SMH,TON,RNG,WRO,THG""".split(',')
 
 class node:
     def __init__(self, value):
@@ -58,11 +58,7 @@ for k,v in node_lookup.items():
     if v.incoming == 0:
         sources[k] = v
 
-
 stack = []
-
-# one iteration of topological sort
-start = node_lookup['S']
 
 def DFS(node):
     global stack
@@ -74,11 +70,8 @@ def DFS(node):
                 DFS(n)
     stack.append(node.value)
 
-for starts in ['W','T', 'S']:
+for starts in sources.keys():
     DFS(node_lookup[starts])
-# DFS(start)
-stack.reverse()
-print(stack)
-# print(ip)
 
-#
+stack.reverse()
+print(''.join(stack))
