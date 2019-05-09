@@ -17,8 +17,7 @@ t->o->n->g
 """
 
 import sys
-# import itertools
-# print(list(itertools.permutations([1,2,3])))
+
 # unique logins
 ip = list(set(sys.stdin.read().split('\n')))
 # ip = """SMH,TON,RNG,WRO,THG""".split(',')
