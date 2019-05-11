@@ -20,14 +20,16 @@ compute wins for p1
 '''
 
 import sys
-ip = sys.stdin.read().split('\n')
+# ip = sys.stdin.read().split('\n')
+ip = open("ip.txt", 'r').read().split('\n')
 
 # ip = """
 # 5H 5C 6S 7S KD 2C 3S 8S 8D TD,
 # 5D 8C 9S JS AC 2C 5C 7D 8S QH,
 # 2D 9C AS AH AC 3D 6D 7D TD QD,
 # 4D 6S 9H QH QC 3D 6D 7H QD QS,
-# 2H 2D 4C 4D 4S 3C 3D 3S 9S 9D""".split(',')
+# 2H 2D 4C 4D 4S 3C 3D 3S 9S 9D,
+# KH JS 4H 5D 9D 2D 3D 4D 5D 6D""".split(',')
 
 # wins of player 1 and 2
 wins = {1 : 0,
@@ -42,7 +44,8 @@ def is_consecutive(cards):
         order.sort()
         # count spacing between 2 elements in a sorted lists
         spacing = [b-a for a,b in list(zip(order, order[1:]))]
-        if max(spacing) == 1:
+        # print(spacing, order)
+        if max(spacing) == 1 and len(set(spacing)) == 1:
                 return 1
         return False
 
@@ -115,46 +118,31 @@ def evaluate(p1, p2):
                 p2_ranks.append(8)
         
         # pair
-        if 2 in p1_freq.values():
+        if 2 in p1_freq.values() and list(p1_freq.values()).count(2) == 1:
                 p1_ranks.append(9)
-        if 2 in p2_freq.values():
+        if 2 in p2_freq.values() and list(p2_freq.values()).count(2) == 1:
                 p2_ranks.append(9)
         
         # highest card
-        if 'A' in p1_cards:
+        if max([ORDER[c] for c in p1_cards]) > max([ORDER[c] for c in p2_cards]):
                 p1_ranks.append(10)
-        if 'A' in p2_cards:
+        elif max([ORDER[c] for c in p1_cards]) < max([ORDER[c] for c in p2_cards]):
                 p2_ranks.append(10)
         
         p1_min = min(p1_ranks)
         p2_min = min(p2_ranks)
 
-        # tie breaker
         if p1_min == p2_min:
-                if p1_min == 1:
-                        return 3
-                if p1_min in [2, 5, 6, 8, 9]:
-                        p1mags = max([ORDER[c] for c in p1_cards])
-                        p2mags = max([ORDER[c] for c in p2_cards])
-                        if p1mags > p2mags: return 1
-                        else: return 2
-                if p1_min == 3:
-                        p1mags = max([ORDER[c] for c in p1_cards if p1_freq[c] == 4])
-                        p2mags = max([ORDER[c] for c in p2_cards if p2_freq[c] == 4])
-                        if p1mags > p2mags: return 1
-                        else: return 2
-                if p1_min == 4:
-                        # tie breaker is in trips
-                        p1mags = max([ORDER[c] for c in p1_cards if p1_freq[c] == 3])
-                        p2mags = max([ORDER[c] for c in p2_cards if p2_freq[c] == 3])
-                        if p1mags > p2mags: return 1
-                        else: return 2
-                if p1_min == 7:
-                        # tie breaker is in trips
-                        p1mags = max([ORDER[c] for c in p1_cards if p1_freq[c] == 3])
-                        p2mags = max([ORDER[c] for c in p2_cards if p2_freq[c] == 3])
-                        if p1mags > p2mags: return 1
-                        else: return 2
+                # print('Tie :(')
+                p1mags, p2mags = p1_min, p2_min
+                seen = []
+                while p1mags == p2mags:
+                        p1mags = max([ORDER[c] for c in p1_cards if ORDER[c] not in seen])
+                        p2mags = max([ORDER[c] for c in p2_cards  if ORDER[c] not in seen])
+                        seen.append(p1mags)
+                if p1mags > p2mags: return 1
+                else: return 2
+
         if p1_min<p2_min:
                 return 1
         else: return 2
@@ -165,6 +153,8 @@ for match in ip:
         p1, p2 = match[:5], match[5:]
         winner = evaluate(p1, p2)
         wins[winner]+=1
+
+        # print(wins)
 
 print(wins[1])
 

@@ -22,6 +22,7 @@ import sys
 ip = list(set(sys.stdin.read().split('\n')))
 # ip = """SMH,TON,RNG,WRO,THG""".split(',')
 
+# ip = open("ip.txt", "r").read().split('\n')
 class node:
     def __init__(self, value):
         self.value = value
