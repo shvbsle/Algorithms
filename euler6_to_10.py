@@ -5,7 +5,7 @@
 N = 100
 sum_sqr = sum([i*i for i in range(1, 101)])
 sqr_sum = sum([i for i in range(1, 101)])**2
-print(sqr_sum - sum_sqr)
+print("Euler 6:", sqr_sum - sum_sqr)
 
 # euler 7
 
@@ -27,12 +27,6 @@ def gen_primes():
         q += 1
 
 counter = 0
-# for n in gen_primes():
-#     counter+=1
-#     if counter == 10001:
-#         print(n, counter)
-
-# answer = 104743
 
 # euler 8
 
@@ -67,4 +61,41 @@ for ind, char in enumerate(input_str):
         for i in num_prod:
             N*=i
         n_list.append(N)
-print(max(n_list))
+print("euler 8:",max(n_list))
+
+# euler 9
+
+"""
+A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+a2 + b2 = c2
+For example, 32 + 42 = 9 + 16 = 25 = 52.
+
+There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+Find the product abc.
+"""
+
+def is_py_trip(a, b, c):
+    if a**2+b**2 == c**2:
+        return [a,b,c]
+    return False
+
+N = 1000
+trips = []
+for i in range(1, 1000):
+    right_half = N-i
+    offset = i
+    if i < int(N/2)+1:
+        for j in range(1, 1002):
+            mid_part = j+offset
+            part3 = right_half-mid_part
+            if mid_part < int(part3)+1:
+                trips.append([i, mid_part, part3])
+                if is_py_trip(i, mid_part, part3):
+                    print("Euler 9:", i, mid_part, part3, i*mid_part*part3)
+                    break
+
+# Euler 10
+
+
+
