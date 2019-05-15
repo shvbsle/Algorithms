@@ -1,61 +1,32 @@
 # euler 54
-
-'''
-rank rules (low to highest):
-
-10 High Card: Highest value card.
-9 One Pair: Two cards of the same value.
-8 Two Pairs: Two different pairs.
-7 Three of a Kind: Three cards of the same value.
-6 Straight: All cards are consecutive values.
-5 Flush: All cards of the same suit.
-4 Full House: Three of a kind and a pair.
-3 Four of a Kind: Four cards of the same value.
-2 Straight Flush: All cards are consecutive values of same suit.
-1 Royal Flush: Ten, Jack, Queen, King, Ace, in same suit.
-
-
-compute wins for p1
-
-'''
 import sys
 # ip = sys.stdin.read().split('\n')
 ip = open("ip.txt", 'r').read().split('\n')
-
-# wins of player 1 and 2
 wins = {1 : 0,
         2: 0}
 
 ORDER = {'2':1, '3':2, '4':3, '5':4, '6':5, '7':6, '8':7, '9':8, 'T':9, 'J':10, 'Q':11, 'K':12, 'A':13}
-ORDER_IN = {v:k for k,v in ORDER.items()}
 
 def is_consecutive(cards):
         order = [ORDER[c] for c in cards]
         order.sort()
-        # count spacing between 2 elements in a sorted lists
         spacing = [b-a for a,b in list(zip(order, order[1:]))]
-        # print(spacing, order)
-        if max(spacing) == 1 and len(set(spacing)) == 1:
-                return 1
+        if max(spacing) == 1 and len(set(spacing)) == 1:return 1
         return False
 
 def freq(cards):
         freq_d = {}
         for card in cards:
-                if card in freq_d:
-                        freq_d[card]+=1
-                else:
-                        freq_d[card] = 1
+                if card in freq_d:freq_d[card]+=1
+                else:freq_d[card] = 1
         return freq_d
 
 def evaluate(p1, p2):
         p1_ranks, p2_ranks = [99], [99]
         p1_cards = [s[0] for s in p1]
         p2_cards = [s[0] for s in p2]
-
         p1_suit = [s[1] for s in p1]
         p2_suit = [s[1] for s in p2]
-        
         p1_freq = freq(p1_cards)
         p2_freq = freq(p2_cards)
 
@@ -119,8 +90,7 @@ def evaluate(p1, p2):
         elif max([ORDER[c] for c in p1_cards]) < max([ORDER[c] for c in p2_cards]):
                 p2_ranks.append(10)
         
-        p1_min = min(p1_ranks)
-        p2_min = min(p2_ranks)
+        p1_min,p2_min = min(p1_ranks),min(p2_ranks)
 
         if p1_min == p2_min:
                 p1mags, p2mags = p1_min, p2_min
@@ -144,6 +114,5 @@ match_results_my = {}
 for match in ip:
         match = match.split()
         p1, p2 = match[:5], match[5:]
-        winner = evaluate(p1, p2)
-        wins[winner]+=1
+        wins[evaluate(p1, p2)]+=1
 print(wins[1])

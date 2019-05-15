@@ -92,10 +92,21 @@ for i in range(1, 1000):
             if mid_part < int(part3)+1:
                 trips.append([i, mid_part, part3])
                 if is_py_trip(i, mid_part, part3):
-                    print("Euler 9:", i, mid_part, part3, i*mid_part*part3)
+                    print("Euler 9:", i*mid_part*part3)
                     break
 
 # Euler 10
+
+up_lim = 2000000
+# up_lim = 10
+p_list = []
+for p in gen_primes():
+    if p<up_lim:
+        p_list.append(p)
+    else:
+        break
+
+print("Euler 10:", sum(p_list))
 
 
 
