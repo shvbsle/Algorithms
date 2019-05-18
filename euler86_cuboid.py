@@ -5,13 +5,36 @@ import operator as op
 from functools import reduce
 from itertools import combinations
 
-dist = lambda d1, d2: math.sqrt((d1**2)+(d2**2))
+# a smarter distance func
+dist2 = lambda s: math.sqrt(s)
+
 # spider is at start of a
 # fly is at the end of c
-def shortest_dist(a, b, c):
-    p1 = dist(a, b+c)
-    p2 = dist(c, a+b)
-    p3 = dist(b, a+c)
+# square lookup:
+square_lookup = {}
+familiar_pair = {}
+familiar_combinations = {}
+seen_results = {}
+def shortest_dist2(a, b, c):
+    if a not in square_lookup:
+        square_lookup[a] = a**2
+    if b not in square_lookup:
+        square_lookup[b] = b**2
+    if c not in square_lookup:
+        square_lookup[c] = c**2
+    base = square_lookup[c]+square_lookup[b]+square_lookup[a]
+    s1 = base+(2*b*c)
+    s2 = base+(2*a*c)
+    s3 = base+(2*a*b)
+    if s1 not in familiar_pair:
+        familiar_pair[s1] = dist2(s1)
+    if s2 not in familiar_pair:
+        familiar_pair[s2] = dist2(s2)
+    if s3 not in familiar_pair:
+        familiar_pair[s3] = dist2(s3)
+    p1 = familiar_pair[s1]
+    p2 = familiar_pair[s2]
+    p3 = familiar_pair[s3]
     return min(p1, p2, p3)
 
 def ncr(n, r): 
@@ -20,12 +43,6 @@ def ncr(n, r):
     denom = reduce(op.mul, range(1, r+1), 1)
     return numer // denom
 
-def dim_generator(M):
-    for i in range(1, M+1):
-        for j in range(1, M+1):
-            for k in range(1, M+1):
-                yield (i, j, k)
-                
 def dim_generator2(M):
     for i in range(1, M+1):
         for j in range(1, M+1):
@@ -38,6 +55,7 @@ start = time.time()
 seen_dims = {}
 total_ints = 0
 upper_lim = 1000000
+upper_lim = 1000
 upper_lim = 500
 for a,b,c in dim_generator2(upper_lim):
     S = [a,b,c]
@@ -46,7 +64,7 @@ for a,b,c in dim_generator2(upper_lim):
     if dim_set in seen_dims:
         continue
     seen_dims[dim_set] = True
-    distance = shortest_dist(a,b,c)
+    distance = shortest_dist2(a,b,c)
     if distance.is_integer():
         total_ints+=1
 print(total_ints)
