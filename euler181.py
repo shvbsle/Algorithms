@@ -13,7 +13,6 @@ start brute force first
 # discovered a nice modification to the formula
 '''
 
-nB, nW = 3,2
 
 memo_unq = {}
 def unq(n):
@@ -30,15 +29,26 @@ def unq(n):
     return memo_unq[n]
 
 # key formed by i and j
-def key(i,j):
-    keyed_ways = 0
-    for k in range(1, min(nB, nW)+1):
-        keyed_ways += unq(nB-i*k)*unq(nW-j*k)
+def key(i,j, Nb, Nw):
+    if Nb <=0 or Nb<=0:return 0
+    keyed_ways = unq(Nb-i)*unq(Nw-j)#+key(i,j,Nb-i,Nw-j)
+    for r in range(i, Nb+1):
+        for k in range(j, Nw+1):
+            keyed_ways += key(i,j,Nb-r,Nw-k)
+    # for k in range(1, min(nB, nW)+1):
+    #     keyed_ways += unq(nB-i*k)*unq(nW-j*k)
     return keyed_ways
+
+
+nB, nW = 3,2
+nB, nW = 3, 3
+nB, nW = 1, 8
 
 total_ways = unq(nB)*unq(nW)
 for i in range(1, nB+1):
     for j in range(1, nW+1):
-        total_ways += key(i,j)
+        total_ways += key(i,j,nB,nW)
 
-print(total_ways)
+print(total_ways) 
+
+# print(key(1,2,2,2))
