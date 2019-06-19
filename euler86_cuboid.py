@@ -83,7 +83,7 @@ is_triples={}
 total_count = 0
 xs = []
 m2=set()
-for a, b, c in pythagoreanTriplets(10000):
+for a, b, c in pythagoreanTriplets(6700):
     S = [a,b,c]
     S.sort()
     for i in range(1,1000):
