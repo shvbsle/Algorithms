@@ -1,4 +1,4 @@
-# euler 86
+# euler 86 - cuboid path
 
 """
 Damnn this problem taught me a alotttt. Damnnnn OMfucking geeeee Damnnnn nibbazzz! figured it out mother fuckerssssss!!!!
