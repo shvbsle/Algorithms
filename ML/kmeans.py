@@ -21,42 +21,41 @@ Learnings:
 from math import *
 from collections import defaultdict
 
-def distf(point1, point2, cnum):
+def distf(point1, point2, clusternum):
     L = len(point1)
-    return (sqrt(sum([(point1[i] - point2[i]) ** 2 for i in range(L)])), cnum)
+    dist = sqrt(sum([(point1[i] - point2[i])**2 for i in range(L)]))
+    return (dist, clusternum)
 
-def newcentf(points):
+def centroidf(points):
     L = len(points[0])
-    size = len(points)
-    return tuple([round(sum([p[i] for p in points])/size, 4) for i in range(L)])
+    num_points = len(points)
+    new_centroids = tuple([ round(sum([points[row][col] for row in range(num_points)])/num_points, 4) for col in range(L) ])
+    return new_centroids 
+
 
 def k_means_clustering(points: list[tuple[float, float]], k: int, initial_centroids: list[tuple[float, float]], max_iterations: int) -> list[tuple[float, float]]:
     '''
-    strategy: 
-        - for num iterations:
-            - iterate through the points
-                - for each centroid find distance from point (track min dist)
-                - assign point to min centroid and its respective clusters
-            - for each cluster, update the centroid for its points
-            return final centroids
+    Strategy:
+        - for max_iterations:
+            - go through all the points
+                - figure out which centroid is closest to the current point (assign that centroids cluster number as the poitns cluster)
+            - for all points, update the centroids
     '''
+
+    centroid_dict = defaultdict(tuple)
+    for i in range(len(initial_centroids)):
+        centroid_dict[i] = initial_centroids[i]
     
-    cluster_centroids = defaultdict(tuple)
-    for cnum in range(k):
-        cluster_centroids[cnum] = initial_centroids[cnum]
-
     for _ in range(max_iterations):
-        clust_assignment = defaultdict(list)
+        cluster_allocation = defaultdict(list)
         for p in points:
-            distvals = [distf(p, cluster_centroids[cnum], cnum) for cnum in range(k)]
-            _, clust = min(distvals)
-            clust_assignment[clust].append(p)
-        
-        # update centroids
-        for cnum, cvals in clust_assignment.items():
-            cluster_centroids[cnum] = newcentf(cvals)
+            _, cnum = min([distf(p, centroid_dict[i], i) for i in range(k)])
+            cluster_allocation[cnum].append(p)
 
-    return list(cluster_centroids.values())
+        for cluster_num, cluster_points in cluster_allocation.items():
+            centroid_dict[cluster_num] = centroidf(cluster_points)
+            
+    return list(centroid_dict.values())
 
 points = [(1, 2), (1, 4), (1, 0), (10, 2), (10, 4), (10, 0)]
 k = 2
